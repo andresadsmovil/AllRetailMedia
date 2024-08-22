@@ -5,6 +5,57 @@ view: all_report_campaign {
     type: string
     sql: ${TABLE}.account_currency ;;
   }
+  dimension: Advertiser_salefore {
+    type: string
+    sql: ${TABLE}.Advertiser__Advertiser ;;
+  }
+  dimension: Agency {
+    type: string
+    sql: ${TABLE}.Agency__Agency_Name ;;
+  }
+  dimension: Product {
+    type: string
+    sql: ${TABLE}.Product ;;
+  }
+  dimension: Product_name {
+    type: string
+    sql: ${TABLE}.Product__Product_Name ;;
+  }
+  dimension: orden_id {
+    type: string
+    sql: ${TABLE}.N__mero_de_Orden ;;
+  }
+  dimension: numero_linea {
+    type: string
+    sql: ${TABLE}.numero_linea ;;
+  }
+  dimension_group: start_date {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.Start_Date ;;
+  }
+  dimension_group: end_date {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.End_Date ;;
+  }
+  dimension: sales_model {
+    type: string
+    sql: ${TABLE}.sales_model ;;
+  }
+  dimension: total_sale {
+    type: number
+    sql: ${TABLE}.total_sale ;;
+  }
+  dimension: click_url {
+    type: string
+    sql: ${TABLE}.click_url ;;
+    html: <img src='{{ value }}' width='60' height='60'>;;
+  }
   dimension: account_id {
     type: string
     sql: CAST(${TABLE}.account_id AS STRING) ;;
@@ -288,6 +339,12 @@ view: all_report_campaign {
     type: sum
     sql: ${view_rate} ;;
   }
+  measure: sum_video_q3s {
+    group_label: "Measures"
+    type: sum
+    sql: ${video_q3s} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
