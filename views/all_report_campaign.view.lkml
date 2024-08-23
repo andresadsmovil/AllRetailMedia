@@ -8,22 +8,27 @@ view: all_report_campaign {
   dimension: Advertiser_salefore {
     type: string
     sql: ${TABLE}.Advertiser__Advertiser ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: Agency {
     type: string
     sql: ${TABLE}.Agency__Agency_Name ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: Product {
     type: string
     sql: ${TABLE}.Product ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: Product_name {
     type: string
     sql: ${TABLE}.Product__Product_Name ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: orden_id {
     type: string
     sql: ${TABLE}.N__mero_de_Orden ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: numero_linea {
     type: string
@@ -35,6 +40,7 @@ view: all_report_campaign {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.Start_Date ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension_group: end_date {
     type: time
@@ -42,10 +48,12 @@ view: all_report_campaign {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.End_Date ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: sales_model {
     type: string
     sql: ${TABLE}.sales_model ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: total_sale {
     type: number
@@ -63,6 +71,7 @@ view: all_report_campaign {
   dimension: account_name {
     type: string
     sql: ${TABLE}.account_name ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: advertiser_id {
     type: string
@@ -71,6 +80,7 @@ view: all_report_campaign {
   dimension: advertiser_name {
     type: string
     sql: ${TABLE}.advertiser_name ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: app_bundle {
     type: string
@@ -87,6 +97,7 @@ view: all_report_campaign {
   dimension: campaign_name {
     type: string
     sql: ${TABLE}.campaign_name ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: click_thru_rate {
     type: number
@@ -127,6 +138,7 @@ view: all_report_campaign {
   dimension: creative_name {
     type: string
     sql: ${TABLE}.creative_name ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
   dimension: creative_size {
     type: string
@@ -147,7 +159,7 @@ view: all_report_campaign {
     sql: ${TABLE}.date_utc ;;
   }
   dimension: day_of_week {
-    type: number
+    type: string
     sql: ${TABLE}.day_of_week ;;
   }
   dimension: deal_id {
@@ -298,6 +310,11 @@ view: all_report_campaign {
     group_label: "Measures"
     type: sum
     sql: ${imp} ;;
+  }
+  measure: max_sale {
+    group_label: "Measures"
+    type: max
+    sql: ${total_sale} ;;
   }
   measure: sum_platform_fee_account_currency {
     group_label: "Measures"
