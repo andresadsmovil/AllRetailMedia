@@ -50,6 +50,14 @@ view: all_report_campaign {
     sql: ${TABLE}.End_Date ;;
     html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
   }
+  dimension_group: report_creation_date {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.report_creation_date ;;
+    html: <H4 style= <div style="font-size: 20px; text-align: center;">{{value}}</H4>;;
+  }
   dimension: sales_model {
     type: string
     sql: ${TABLE}.sales_model ;;
@@ -58,6 +66,10 @@ view: all_report_campaign {
   dimension: total_sale {
     type: number
     sql: ${TABLE}.total_sale ;;
+  }
+  dimension: user_id {
+    type: number
+    sql: ${TABLE}.user_id ;;
   }
   dimension: click_url {
     type: string
@@ -89,6 +101,11 @@ view: all_report_campaign {
   dimension: app_name {
     type: string
     sql: ${TABLE}.app_name ;;
+  }
+  dimension: insights {
+    type: string
+    sql: ${TABLE}.insights ;;
+    html: <h6 style= <div style="font-size: 20px; text-align: center;">{{value}}</h6>;;
   }
   dimension: campaign_id {
     type: string
